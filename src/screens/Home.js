@@ -20,19 +20,25 @@ function HomeScreen(props) {
         <Text style={styles.mainheader}>Dashboard</Text>
       </View>
 
-      <View style={styles.uicon}>
-        <Image source={require("../../assets/images/User.png")} />
-      </View>
+      <TouchableOpacity style={styles.uicon} onPress={() => navigation.navigate("Reward")}>
+        <Image
+          source={require("../../assets/images/User.png")}
+          />
+      </TouchableOpacity> 
 
       <View style={styles.background}>
-        <View style={styles.background} />
+        <Text style={styles.backgroundtext}>Hello Ryan!</Text>
+        <Text style={styles.backgroundtext2}>You have 120 points</Text>
       </View>
 
       <View style={styles.background2}>
-        <View style={styles.background2} />
+        <View style={styles.background2}>
+
+          <Text style={styles.countdown}>Countdown:</Text>
+        </View>
       </View>
 
-      <View
+      {/* <View
         style={{
           position: "absolute",
           top: -445,
@@ -43,10 +49,9 @@ function HomeScreen(props) {
           alignItems: "center",
         }}
       >
-        <View style={{position: 'absolute', top: 100, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
-          <Text style={styles.countdown}>Countdown:</Text>
+        <View style={{position: 'absolute', top: 110, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
         </View>
-      </View>
+      </View> */}
     
       
       <View style={styles.box1}>
@@ -117,9 +122,6 @@ function HomeScreen(props) {
               source={require("../../assets/images/tasklist.png")}
               />
             </TouchableOpacity> 
-            
-            <Button title="Reward" onPress={() => navigation.navigate("Reward")} />
-            <StatusBar style="auto" />
           </View>
       </View>
     </View>
@@ -140,8 +142,9 @@ const styles = StyleSheet.create({
     fontSize: 45,
   },
   uicon: {
-    marginTop: -49,
+    marginTop: 75,
     marginLeft: 300,
+    position: "absolute",
   },
   background: {
     width: 375,
@@ -150,8 +153,20 @@ const styles = StyleSheet.create({
     borderradius: 15,
     transform: [{ rotate: "-6deg" }],
     borderTopRightRadius: 15,
-    marginTop: 45,
+    marginTop: 40,
     marginLeft: -10,
+  },
+  backgroundtext: {
+    position: "absolute",
+    marginTop: 10,
+    marginLeft: 75,
+    fontSize: 24
+  },
+  backgroundtext2: {
+    position: "absolute",
+    marginTop: 35,
+    marginLeft: 180,
+    fontSize: 18
   },
   background2: {
     width: 374.85,
@@ -165,6 +180,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "#FFFFFF",
     position: "absolute",
+    marginTop: -200,
+    marginLeft: 30,
   },
   box1: {
     width: 340,
@@ -184,15 +201,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     fontSize: 25,
   },
-  countdown: {
-    fontSize: 18,
-    color: "#FFFFFF",
-    marginBottom:15,
-    position: "absolute",
-  },
   timer: {
     // position: "absolute",
     marginTop: 40,
+    marginBottom: 10,
     // marginLeft: 40,
     transform: [{ scale: 1.1 }],
   },
@@ -283,7 +295,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 15,
     borderBottomRightRadius: 15,
     borderBottomLeftRadius: 15,
-    marginTop: 310,
+    marginTop: 300,
     marginLeft: -20,
     },
     search: {
