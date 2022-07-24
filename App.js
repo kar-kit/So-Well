@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { LogBox } from "react-native";
 import { decode, encode } from "base-64";
 if (!global.btoa) {
   global.btoa = encode;
@@ -17,9 +18,14 @@ import SetTaskScreen from "./src/screens/SetTask";
 import TaskList from "./src/screens/TaskList";
 import LoginScreen from "./src/screens/Login";
 import RegisterScreen from "./src/screens/Register";
-import { firebase } from "./config";
+import { auth } from "./config";
 
 const Stack = createNativeStackNavigator();
+
+LogBox.ignoreLogs([
+  "AsyncStorage has been extracted from react-native core and will be removed in a future release. It can now be installed and imported from '@react-native-async-storage/async-storage' instead of 'react-native'. See https://github.com/react-native-async-storage/async-storage",
+  "source.uri should not be an empty string at node_modules/react-native/Libraries/Image/Image.android.js:136:6 in Image",
+]);
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -27,7 +33,7 @@ export default function App() {
   const [initializing, setInitializing] = useState(true);
 
   useEffect(() => {
-    const subscriber = firebase.auth().onAuthStateChanged((user) => {
+    const subscriber = auth.onAuthStateChanged((user) => {
       setUser(user);
       setInitializing(false);
     });
@@ -38,10 +44,13 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login"  screenOptions={{ headerShown: false }}>
+      <Stack.Navigator
+        initialRouteName="Login"
+        screenOptions={{ headerShown: false }}
+      >
         {user ? (
           <>
-            <Stack.Screen name="Home">
+            <Stack.Screen name="Home" screenOptions={{ headerShown: false }} c>
               {(props) => <HomeScreen {...props} extraData={user} />}
             </Stack.Screen>
             <Stack.Screen name="Reward" component={RewardScreen} />
@@ -57,7 +66,7 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
