@@ -1,8 +1,8 @@
-import * as firebase from "firebase";
 import { initializeApp } from "firebase/app";
-
-import "firebase/auth";
-import "firebase/firestore";
+import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
+import { getDatabase } from "firebase/database";
+import { getFirestore } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -16,19 +16,30 @@ const firebaseConfig = {
   messagingSenderId: "518586121512",
   appId: "1:518586121512:web:93bdbfa247bb30fcbae41d",
   measurementId: "G-FXJNRCBS6F",
+  storageBucket: "gs://sowell-5120c.appspot.com/",
+  databaseURL:
+    "https://sowell-5120c-default-rtdb.europe-west1.firebasedatabase.app/",
 };
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+// if (!firebase.apps.length) {
+//   firebase.initializeApp(firebaseConfig);
+// }
 
-let app;
-if (firebase.apps.length === 0) {
-  app = firebase.initializeApp(firebaseConfig);
-} else {
-  app = firebase.app();
-}
+// let app;
+// if (firebase.apps.length === 0) {
+//   app = firebase.initializeApp(firebaseConfig);
+// } else {
+//   app = firebase.app();
+// }
 
-const auth = firebase.auth();
+const app = initializeApp(firebaseConfig);
 
-export { auth, firebase };
+const auth = getAuth(app);
+
+const storage = getStorage(app);
+
+const database = getDatabase(app);
+
+const firestore = getFirestore(app);
+
+export { auth, storage, database, firestore };
