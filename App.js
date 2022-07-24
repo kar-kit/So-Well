@@ -38,7 +38,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Login"  screenOptions={{ headerShown: false }}>
         {user ? (
           <>
             <Stack.Screen name="Home">
@@ -57,7 +57,7 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
