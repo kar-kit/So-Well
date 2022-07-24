@@ -17,6 +17,7 @@ import RewardScreen from "./src/screens/Reward";
 import SetTaskScreen from "./src/screens/SetTask";
 import TaskList from "./src/screens/TaskList";
 import LoginScreen from "./src/screens/Login";
+import TimerScreen from "./src/screens/Time";
 import RegisterScreen from "./src/screens/Register";
 import { auth } from "./config";
 
@@ -58,6 +59,7 @@ export default function App() {
         <Stack.Screen name="TaskList" component={TaskList} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
