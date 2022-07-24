@@ -16,6 +16,7 @@ import RewardScreen from "./src/screens/Reward";
 import SetTaskScreen from "./src/screens/SetTask";
 import TaskList from "./src/screens/TaskList";
 import LoginScreen from "./src/screens/Login";
+import TimerScreen from "./src/screens/Time";
 import RegisterScreen from "./src/screens/Register";
 import { firebase } from "./config";
 
@@ -38,15 +39,16 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login"  screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Login">
         {user ? (
           <>
-            <Stack.Screen name="Home">
+            <Stack.Screen name="Home" screenOptions={{ headerShown: false }}>
               {(props) => <HomeScreen {...props} extraData={user} />}
             </Stack.Screen>
             <Stack.Screen name="Reward" component={RewardScreen} />
             <Stack.Screen name="SetTask" component={SetTaskScreen} />
             <Stack.Screen name="TaskList" component={TaskList} />
+            <Stack.Screen name="Timer" component={TimerScreen} />
           </>
         ) : (
           <>
