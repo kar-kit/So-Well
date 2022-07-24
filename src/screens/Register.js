@@ -6,9 +6,12 @@ import {
   TouchableOpacity,
   View,
   StyleSheet,
+  Alert,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { firebase, auth } from "../../config";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, doc, setDoc } from "firebase/firestore";
+import { firestore, auth } from "../../config";
 
 export default function RegisterScreen({ navigation }) {
   const [fullName, setFullName] = useState("");
@@ -25,30 +28,34 @@ export default function RegisterScreen({ navigation }) {
       alert("Passwords don't match.");
       return;
     }
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((response) => {
-        const uid = response.user.uid;
-        const data = {
-          id: uid,
-          email,
-          fullName,
-        };
-        const usersRef = firebase.firestore().collection("users");
-        usersRef
-          .doc(uid)
-          .set(data)
-          .then(() => {
-            navigation.navigate("Home", { user: data });
-          })
-          .catch((error) => {
-            alert(error);
-          });
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        navigation.navigate("Home");
       })
       .catch((error) => {
         alert(error);
       });
   };
+
+  // .then(async (re) => {
+
+  //   const docRef = doc(firestore, "users", user);
+  //   const docSnap = await getDoc(docRef);
+  //   if (docSnap.exists()) {
+  //     Alert.alert("User with those credentials already exist");
+  //   } else {
+  //     await setDoc(doc(firestore, "cities", "LA"), {
+  //       id: user,
+  //       email,
+  //       fullName,
+  //     });
+
+  //   }
+  // })
+  // .catch((error) => {
+  //   alert(error);
+  // });
 
   return (
     <View style={styles.container}>

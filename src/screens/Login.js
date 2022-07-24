@@ -8,47 +8,23 @@ import {
   StyleSheet,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import { firebase } from "../../config";
-import { auth } from "../../config";
+import { auth, firestore } from "../../config";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        navigation.navigate("Home");
-      }
-    });
-
-    return unsubscribe;
-  }, []);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   const onFooterLinkPress = () => {
     navigation.navigate("Register");
   };
 
   const onLoginPress = () => {
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then((response) => {
-        const uid = response.user.uid;
-        const usersRef = firebase.firestore().collection("users");
-        usersRef
-          .doc(uid)
-          .get()
-          .then((firestoreDocument) => {
-            if (!firestoreDocument.exists) {
-              alert("User does not exist anymore.");
-              return;
-            }
-            const user = firestoreDocument.data();
-            navigation.navigate("Home", { user });
-          })
-          .catch((error) => {
-            alert(error);
-          });
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        setIsSignedIn(true);
+        navigation.navigate("Home");
       })
       .catch((error) => {
         alert(error);

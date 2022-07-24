@@ -22,13 +22,13 @@ function HomeScreen(props) {
         <Image source={require("../../assets/images/User.png")} />
       </View>
 
-      {/* <View style={styles.background}>
+      <View style={styles.background}>
         <View style={styles.background} />
       </View>
 
       <View style={styles.background2}>
         <View style={styles.background2} />
-      </View> */}
+      </View>
 
       <View
         style={{

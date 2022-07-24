@@ -30,17 +30,17 @@ LogBox.ignoreLogs([
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
-  const [initializing, setInitializing] = useState(true);
+  // const [initializing, setInitializing] = useState(true);
 
-  useEffect(() => {
-    const subscriber = auth.onAuthStateChanged((user) => {
-      setUser(user);
-      setInitializing(false);
-    });
-    return subscriber;
-  }, []);
+  // useEffect(() => {
+  //   const subscriber = auth.onAuthStateChanged((user) => {
+  //     setUser(user);
+  //     setInitializing(false);
+  //   });
+  //   return subscriber;
+  // }, []);
 
-  if (initializing) return null; //Here you may use an Activity indicator
+  // if (initializing) return null; //Here you may use an Activity indicator
 
   return (
     <NavigationContainer>
@@ -48,21 +48,16 @@ export default function App() {
         initialRouteName="Login"
         screenOptions={{ headerShown: false }}
       >
-        {user ? (
-          <>
-            <Stack.Screen name="Home" screenOptions={{ headerShown: false }} c>
-              {(props) => <HomeScreen {...props} extraData={user} />}
-            </Stack.Screen>
-            <Stack.Screen name="Reward" component={RewardScreen} />
-            <Stack.Screen name="SetTask" component={SetTaskScreen} />
-            <Stack.Screen name="TaskList" component={TaskList} />
-          </>
-        ) : (
-          <>
-            <Stack.Screen name="Login" component={LoginScreen} />
-            <Stack.Screen name="Register" component={RegisterScreen} />
-          </>
-        )}
+        <Stack.Screen
+          name="Home"
+          screenOptions={{ headerShown: false }}
+          component={HomeScreen}
+        ></Stack.Screen>
+        <Stack.Screen name="Reward" component={RewardScreen} />
+        <Stack.Screen name="SetTask" component={SetTaskScreen} />
+        <Stack.Screen name="TaskList" component={TaskList} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
