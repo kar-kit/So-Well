@@ -43,7 +43,7 @@ function HomeScreen(props) {
           alignItems: "center",
         }}
       >
-        <View style={{position: 'absolute', top: 110, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
+        <View style={{position: 'absolute', top: 100, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
           <Text style={styles.countdown}>Countdown:</Text>
         </View>
       </View>
@@ -297,21 +297,18 @@ const styles = StyleSheet.create({
       marginLeft: 45,
       marginRight: 300,
       marginTop: -50,
-      fontSize: 30,
       transform: [{scale: 1}],
     },
     dot: {
       marginLeft: 21,
       marginRight: 300,
       marginTop: 3,
-      fontSize: 30,
       transform: [{scale: 1}],
     },
     tasklist: {
       marginLeft: 290,
       marginRight: 300,
       marginTop: -47,
-      fontSize: 30,
       transform: [{scale: 1.1}],
     },
 });
