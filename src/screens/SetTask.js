@@ -125,13 +125,7 @@ function SetTaskScreen({ navigation }) {
         >
           <Image source={require("../../assets/images/tasklist.png")} />
         </TouchableOpacity>
-
-            <TouchableOpacity style={styles.tasklist} onPress={() => navigation.navigate("TaskList")}>
-            <Image
-              source={require("../../assets/images/tasklist.png")}
-              />
-            </TouchableOpacity> 
-          </View>
+      </View>
     </View>
   );
 }
