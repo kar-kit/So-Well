@@ -1,10 +1,17 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, Image, View, Button, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  Image,
+  View,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CountDown from "react-native-countdown-component";
-import DatePicker from 'react-native-date-picker'
+import DatePicker from "react-native-date-picker";
 
 import { useNavigation } from "@react-navigation/core";
 import { auth } from "../../config";
@@ -20,20 +27,20 @@ function HomeScreen(props) {
         <Text style={styles.mainheader}>Dashboard</Text>
       </View>
 
-      <TouchableOpacity style={styles.uicon} onPress={() => navigation.navigate("Reward")}>
-        <Image
-          source={require("../../assets/images/User.png")}
-          />
-      </TouchableOpacity> 
+      <TouchableOpacity
+        style={styles.uicon}
+        onPress={() => navigation.navigate("Reward")}
+      >
+        <Image source={require("../../assets/images/User.png")} />
+      </TouchableOpacity>
 
       <View style={styles.background}>
-        <Text style={styles.backgroundtext}>Hello Ryan!</Text>
+        <Text style={styles.backgroundtext}>Hello Joey!</Text>
         <Text style={styles.backgroundtext2}>You have 120 points</Text>
       </View>
 
       <View style={styles.background2}>
         <View style={styles.background2}>
-
           <Text style={styles.countdown}>Countdown:</Text>
         </View>
       </View>
@@ -52,77 +59,98 @@ function HomeScreen(props) {
         <View style={{position: 'absolute', top: 110, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
         </View>
       </View> */}
-    
-      
+
       <View style={styles.box1}>
         <TouchableOpacity onPress={() => navigation.navigate("Timer")}>
-
           <View style={styles.timer}>
-              <CountDown
-                until={86400}
-                size={30}
-                onFinish={() => alert("Finished")}
-                digitStyle={{ backgroundColor: "#FFFFFF" }}
-                digitTxtStyle={{ color: "#000000" }}
-                separatorStyle={{ color: "#000000" }}
-                timeToShow={["D", "H", "M", "S"]}
-                timeLabels={{ d: "Days", h: "Hours", m: "Minutes", s: "Seconds" }}
-                timeLabelStyle={{ color: "#2C62FF" }}
-                onPress={() => navigation.navigate("Timer")}
-              />
-
+            <CountDown
+              until={464646}
+              size={30}
+              onFinish={() => alert("Finished")}
+              digitStyle={{ backgroundColor: "#FFFFFF" }}
+              digitTxtStyle={{ color: "#000000" }}
+              separatorStyle={{ color: "#000000" }}
+              timeToShow={["D", "H", "M", "S"]}
+              timeLabels={{ d: "Days", h: "Hours", m: "Minutes", s: "Seconds" }}
+              timeLabelStyle={{ color: "#2C62FF" }}
+              onPress={() => navigation.navigate("Timer")}
+            />
           </View>
-          
-          <View style={{position: 'absolute', top: -80, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
+
+          <View
+            style={{
+              position: "absolute",
+              top: -80,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <Text style={styles.boxtxt}>WOOHOO! You have</Text>
-          </View>     
-            
-          <View style={{position: 'absolute', top: 170, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
+          </View>
+
+          <View
+            style={{
+              position: "absolute",
+              top: 170,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <Text style={styles.boxtxt}>Left to isolate</Text>
           </View>
+        </TouchableOpacity>
+
+        <View style={styles.task1}>
+          <Text style={styles.tasktext1}>Reading</Text>
+          <Text style={styles.num1}>25</Text>
+        </View>
+
+        <View style={styles.task2}>
+          <Text style={styles.tasktext2}>Meditation</Text>
+          <Text style={styles.num2}>15</Text>
+        </View>
+
+        <View style={styles.task3}>
+          <Text style={styles.tasktext3}>Drawing</Text>
+          <Text style={styles.num3}>10</Text>
+        </View>
+
+        <View style={styles.quote}>
+          <Text style={styles.quotetext}>
+            "The bad news is time flies. The good news is you're the pilot." -
+            Michael Altshuler{" "}
+          </Text>
+        </View>
+
+        <View style={styles.navbar}>
+          <TouchableOpacity
+            style={styles.search}
+            onPress={() => navigation.navigate("SetTask")}
+          >
+            <Image source={require("../../assets/images/search.png")} />
           </TouchableOpacity>
- 
-          <View style={styles.task1}>
-            <Text style={styles.tasktext1}>Reading</Text>
-            <Text style={styles.num1}>25</Text>
-          </View>
 
-          <View style={styles.task2}>
-            <Text style={styles.tasktext2}>Meditation</Text>
-            <Text style={styles.num2}>15</Text>
-          </View>
-
-          <View style={styles.task3}>
-            <Text style={styles.tasktext3}>Drawing</Text>
-            <Text style={styles.num3}>10</Text>
-          </View>
-
-          <View style={styles.quote}>
-            <Text style={styles.quotetext}>"The bad news is time flies. The good news is you're the pilot." - Michael Altshuler </Text>
-          </View>
-
-          <View style={styles.navbar}>
-            <TouchableOpacity style={styles.search} onPress={() => navigation.navigate("SetTask")}>
+          <TouchableOpacity style={styles.house}>
+            <Image source={require("../../assets/images/house.png")} />
             <Image
-              source={require("../../assets/images/search.png")}
-              />
-            </TouchableOpacity> 
-
-            <TouchableOpacity style={styles.house}>
-            <Image
-              source={require("../../assets/images/house.png")}
-              />
-            <Image style={styles.dot}
+              style={styles.dot}
               source={require("../../assets/images/dot.png")}
-              />
-            </TouchableOpacity> 
+            />
+          </TouchableOpacity>
 
-            <TouchableOpacity style={styles.tasklist} onPress={() => navigation.navigate("TaskList")}>
-            <Image
-              source={require("../../assets/images/tasklist.png")}
-              />
-            </TouchableOpacity> 
-          </View>
+          <TouchableOpacity
+            style={styles.tasklist}
+            onPress={() => navigation.navigate("TaskList")}
+          >
+            <Image source={require("../../assets/images/tasklist.png")} />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -160,13 +188,13 @@ const styles = StyleSheet.create({
     position: "absolute",
     marginTop: 10,
     marginLeft: 75,
-    fontSize: 24
+    fontSize: 24,
   },
   backgroundtext2: {
     position: "absolute",
     marginTop: 35,
     marginLeft: 180,
-    fontSize: 18
+    fontSize: 18,
   },
   background2: {
     width: 374.85,
@@ -221,8 +249,8 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   tasktext1: {
-  marginLeft: 25,
-  marginTop: 7
+    marginLeft: 25,
+    marginTop: 7,
   },
   task2: {
     width: 100,
@@ -237,8 +265,8 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   tasktext2: {
-  marginLeft: 18,
-  marginTop: 7
+    marginLeft: 18,
+    marginTop: 7,
   },
   task3: {
     width: 100,
@@ -253,8 +281,8 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   tasktext3: {
-  marginLeft: 25,
-  marginTop: 7,
+    marginLeft: 25,
+    marginTop: 7,
   },
   quote: {
     width: 340,
@@ -297,30 +325,30 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 15,
     marginTop: 300,
     marginLeft: -20,
-    },
-    search: {
-      marginLeft: 155,
-      marginRight: 180,
-      marginTop: 15,
-      fontSize: 30,
-      transform: [{scale: 1.3}],
-    },
-    house: {
-      marginLeft: 45,
-      marginRight: 300,
-      marginTop: -50,
-      transform: [{scale: 1}],
-    },
-    dot: {
-      marginLeft: 21,
-      marginRight: 300,
-      marginTop: 3,
-      transform: [{scale: 1}],
-    },
-    tasklist: {
-      marginLeft: 290,
-      marginRight: 300,
-      marginTop: -47,
-      transform: [{scale: 1.1}],
-    },
+  },
+  search: {
+    marginLeft: 155,
+    marginRight: 180,
+    marginTop: 15,
+    fontSize: 30,
+    transform: [{ scale: 1.3 }],
+  },
+  house: {
+    marginLeft: 45,
+    marginRight: 300,
+    marginTop: -50,
+    transform: [{ scale: 1 }],
+  },
+  dot: {
+    marginLeft: 21,
+    marginRight: 300,
+    marginTop: 3,
+    transform: [{ scale: 1 }],
+  },
+  tasklist: {
+    marginLeft: 290,
+    marginRight: 300,
+    marginTop: -47,
+    transform: [{ scale: 1.1 }],
+  },
 });

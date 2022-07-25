@@ -125,13 +125,7 @@ function SetTaskScreen({ navigation }) {
         >
           <Image source={require("../../assets/images/tasklist.png")} />
         </TouchableOpacity>
-
-            <TouchableOpacity style={styles.tasklist} onPress={() => navigation.navigate("TaskList")}>
-            <Image
-              source={require("../../assets/images/tasklist.png")}
-              />
-            </TouchableOpacity> 
-          </View>
+      </View>
     </View>
   );
 }
@@ -149,7 +143,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   toptext: {
-    marginTop: -125,
+    marginTop: -120,
     marginLeft: 0,
     marginRight: 0,
     color: "#FFFFFF",
@@ -170,7 +164,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 15,
     borderBottomRightRadius: 15,
     borderBottomLeftRadius: 15,
-    marginTop: 65,
+    marginTop: 60,
     zIndex: 3,
   },
   bimage: {
@@ -189,17 +183,23 @@ const styles = StyleSheet.create({
   btext: {
     marginTop: 125,
     zIndex: 5,
-    fontSize: 36,
+    marginLeft: 10,
+    marginRight: 5,
+    fontSize: 30,
   },
   btext2: {
     marginTop: 10,
     zIndex: 5,
+    marginLeft: 10,
+    marginRight: 5,
     fontSize: 30,
   },
   btext0: {
     marginTop: -425,
     zIndex: 5,
-    fontSize: 30,
+    marginLeft: 10,
+    marginRight: 10,
+    fontSize: 28,
   },
   taskbackground: {
     width: 340,
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
     height: 100,
     backgroundColor: "#5cff4d",
     marginLeft: -240,
-    marginTop: 120,
+    marginTop: 285,
     zIndex: 6,
     borderBottomLeftRadius: 15,
     borderTopRightRadius: 15,
