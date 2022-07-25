@@ -126,9 +126,12 @@ function SetTaskScreen({ navigation }) {
           <Image source={require("../../assets/images/tasklist.png")} />
         </TouchableOpacity>
 
-        <Button title="Reward" onPress={() => navigation.navigate("Reward")} />
-        <StatusBar style="auto" />
-      </View>
+            <TouchableOpacity style={styles.tasklist} onPress={() => navigation.navigate("TaskList")}>
+            <Image
+              source={require("../../assets/images/tasklist.png")}
+              />
+            </TouchableOpacity> 
+          </View>
     </View>
   );
 }
